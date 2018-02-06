@@ -1,6 +1,9 @@
 <?php
+// session_start definie dans index.php
+// Importation des class
+//require "../src/user.php";
 // Si c'est POST alors le formulaire à été POSTE autrement c'est GET
-var_dump($_POST);
+//var_dump($_POST);
 // Récupération méthode d'affichage de la page
 $isPosted = filter_has_var(INPUT_POST, "submit");
 // Traitement du formulaire si les données ont été postées.
@@ -12,11 +15,16 @@ if ($isPosted) {
 // Validation de la saisie
     $isFormValid = $userName && $email && $password;
 // Instanciation de l'utilisateur
-
-// Stockage de l'utilisateur dans une session
-
+    if ($isFormValid) {
+        $user = new user($email, $password, $userName);
+        var_dump($user);
+        var_dump(serialize($user));
+        // Stockage de l'utilisateur dans une session
+        $_SESSION["user"] = serialize($user);   // Impossible de stocker un objet donc serialization vers string Json
+    }
 
 // Redirection vers une autre page
+    header("location:index.php");
 }
 ?>
 <!DOCTYPE>
