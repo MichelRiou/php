@@ -1,5 +1,5 @@
 <?php
-// Demarrge de la session
+// Demarrage de la session
 session_start();
 // Définition du chemin racine de l'appli.
 //
@@ -18,7 +18,7 @@ function autoloader($class){
 // Référencement de la fonction d'autochargement
 spl_autoload_register("autoloader");
 // Gestion d'une route
-$route = filter_input(INPUT_GET, "r", FILTER_SANITIZE_URL)??"home";  // ?? retourne le premier element non nul
+$route = filter_input(INPUT_GET, "r", FILTER_SANITIZE_URL)??"ROOT_PATH.\"/src/controllers/home";  // ?? retourne le premier element non nul
 $controllerPath=ROOT_PATH . "/src/controllers/${route}.php";
 if (file_exists($controllerPath)) {
 // Inclusion de la route
@@ -27,7 +27,7 @@ if (file_exists($controllerPath)) {
     //throw new Exception("Erreur 404");
     include ROOT_PATH."/src/controllers/404.html";
 }
-
+/*
 // Instanciation d'un utilisateur
 if (isset($_SESSION["user"])) {
     $user = unserialize($_SESSION["user"]);
@@ -35,4 +35,4 @@ if (isset($_SESSION["user"])) {
     header("location:inscription.php");
 }
 echo "Hello " . $user->getUser() . "<br>";
-echo "SHA1 " . $user->getPassword();
+echo "SHA1 " . $user->getPassword();*/
