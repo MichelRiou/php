@@ -1,7 +1,16 @@
+<h1>HOME</h1>
+
 <?php
-/**
- * Created by PhpStorm.
- * User: formation
- * Date: 06/02/2018
- * Time: 15:06
- */
+?>
+<p>
+<?= $user->getUserName() ?>
+<?php echo $user->getUserName();?>
+<?php
+$title = new HtmlTag("h1","Hello again",["style"=>"color:red"]);
+echo $title;
+$link = new HtmlLink("index.php?r=inscription","lien");
+echo $link;
+$link = new HtmlTag("a","autre lien",["href"=>"index.php?r=inscription"]);
+?>
+</p>
+
