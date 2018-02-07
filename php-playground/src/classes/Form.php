@@ -15,6 +15,10 @@ class Form extends HtmlTag
      * @var Input[]
      */
     private $inputList = [];
+    /**
+     * @var Object
+     */
+    private $dto;   // Pas dans le constructeur donc non obligaoire mais on crée Setter et Getter
 
 
     /**
@@ -22,7 +26,7 @@ class Form extends HtmlTag
      * @param string $method
      * @param string $action
      */
-    public function __construct($method, $action, $attributes = [])
+    public function __construct($method = "post", $action = null, $attributes = [])
     {
         $this->method = $method;
         $this->action = $action;
@@ -91,12 +95,58 @@ class Form extends HtmlTag
     /**
      * @param Input $input
      */
-    public function addInput(Input $input)
+    public function addInput(Input $input): Form
     {
         // array_push($this->inputList,$input);
         $this->inputList[$input->getName()] = $input;
-
+        return $this;
     }
 
+    private function renderInputs()
+    {
+        $html = "";
+        foreach ($this->inputList as $name => $value) {
+            $html .= $value;  // Grace a la magique __toString !!
+        }
+        return $html;
+    }
+
+    public function __toString()
+    {
+        $content = $this->renderInputs();
+        $content .= "<button type=\"submit\" name=\"submit\">Valider</button>";
+        $this->content = $content;
+        return parent::__toString();
+    }
+
+    /**
+     * @return Object
+     */
+    public function getDto(): Object
+    {
+        return $this->dto;
+    }
+
+    private function hydrateForm()
+    {
+        foreach ($this->inputList as $key => $val) {
+            $methodName="get".ucfirst($key);
+            if(method_exists($this-> dto,$methodName)){
+                $val->setValue($this->dto->$methodName());
+
+            }
+        }
+    }
+
+    /**
+     * @param Object $dto
+     * @return Form
+     */
+    public function setDto($dto): Form
+    {
+        $this->dto = $dto;
+        $this->hydrateForm();
+        return $this;
+    }
 
 }
