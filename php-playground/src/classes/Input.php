@@ -94,6 +94,7 @@ class Input extends HtmlTag
     public function setValue(string $value): Input
     {
         $this->value = $value;
+        $this->attributes["value"]=$value;
         return $this;
     }
 

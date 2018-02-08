@@ -6,6 +6,7 @@
 //var_dump($_POST);
 // Récupération méthode d'affichage de la page
 $isPosted = filter_has_var(INPUT_POST, "submit");
+$logger->write("Création d'un nouvel formulaire");
 // Traitement du formulaire si les données ont été postées.
 if ($isPosted) {
 // Récupération de la saisie
@@ -21,6 +22,7 @@ if ($isPosted) {
         var_dump(serialize($user));
         // Stockage de l'utilisateur dans une session
         $_SESSION["user"] = serialize($user);   // Impossible de stocker un objet donc serialization vers string Json
+        $logger->write("Création d'un nouvel utilisateur");
     }
 
 // Redirection vers une autre page

@@ -4,7 +4,7 @@ class user
 {
 private $email;
 private $password;
-private $user;
+private $userName;
 
     /**
      * @return mixed
@@ -45,18 +45,18 @@ private $user;
     /**
      * @return mixed
      */
-    public function getUser()
+    public function getUserName()
     {
-        return $this->user;
+        return $this->userName;
     }
 
     /**
      * @param mixed $user
      * @return user
      */
-    public function setUser($user)
+    public function setUserName($user)
     {
-        $this->user = $user;
+        $this->userName = $user;
         return $this;
     }
 
@@ -70,6 +70,6 @@ private $user;
     {
         $this->email = $email;
         $this->password = sha1($password);
-        $this->user = $user;
+        $this->userName = $user;
     }
 }
