@@ -27,11 +27,9 @@ private $age;
      * @param $firstName
      * @param $age
      */
-    public function __construct($name, $firstName, $age)
+    public function __construct()
     {
-        $this->name = $name;
-        $this->firstName = $firstName;
-        $this->age = $age;
+
     }
 
     /**

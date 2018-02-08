@@ -16,7 +16,7 @@ class Form extends HtmlTag
      */
     private $inputList = [];
     /**
-     * @var Object
+     * @var object
      */
     private $dto;   // Pas dans le constructeur donc non obligaoire mais on crée Setter et Getter
 
@@ -122,16 +122,20 @@ class Form extends HtmlTag
     /**
      * @return Object
      */
-    public function getDto(): Object
+    public function getDto()
     {
         return $this->dto;
     }
 
     private function hydrateForm()
     {
+        print_r($this->inputList);
         foreach ($this->inputList as $key => $val) {
-            $methodName="get".ucfirst($key);
-            if(method_exists($this-> dto,$methodName)){
+            $methodName = "get" . ucfirst($key);
+            echo ("apres ucfirst ==========>".$methodName."<br>");
+            print_r($this->dto);
+            if (method_exists($this->dto, $methodName)) {
+                echo ("methode après méthode exists==========>". $this->dto->$methodName());
                 $val->setValue($this->dto->$methodName());
 
             }

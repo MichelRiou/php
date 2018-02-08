@@ -18,10 +18,10 @@
     $input = new Input("text", "userName", "Name");
     print_r($input);
     echo $input;
-    $joe=new PersonDTO();
-    $joe->setName("Joe")->setName("User")->setAge(29);
+    $joe = new PersonDTO();
+    $joe->setFirstName("Joe")->setName("User")->setAge(29);
     $form = new Form();
-    $form->addInput(new Input("text", "firstname", "Prénom"))
+    $form->addInput(new Input("text", "firstName", "Prénom"))
         ->addInput(new Input("text", "name", "Nom"))
         ->addInput(new Input("number", "age", "Age"))
         ->setDto($joe);
