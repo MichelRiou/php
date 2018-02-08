@@ -111,7 +111,7 @@ class Form extends HtmlTag
         return $html;
     }
 
-    public function __toString()
+    public function __toString()                    //invocation de __toString lors de l'echo
     {
         $content = $this->renderInputs();
         $content .= "<button type=\"submit\" name=\"submit\">Valider</button>";
@@ -130,11 +130,12 @@ class Form extends HtmlTag
     private function hydrateForm()
     {
         print_r($this->inputList);
-        foreach ($this->inputList as $key => $val) {
-            $methodName = "get" . ucfirst($key);
+        echo"<br>";
+        foreach ($this->inputList as $key => $val) {                    //Tableau d'objets $key=nom de obj et $val=l'objet
+            $methodName = "get" . ucfirst($key);                        //
             echo ("apres ucfirst ==========>".$methodName."<br>");
             print_r($this->dto);
-            if (method_exists($this->dto, $methodName)) {
+            if (method_exists($this->dto, $methodName)) {               // Si grace à setDto,
                 echo ("methode après méthode exists==========>". $this->dto->$methodName());
                 $val->setValue($this->dto->$methodName());
 
