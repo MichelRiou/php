@@ -27,5 +27,26 @@
         ->setDto($joe);
 
     echo $form;
+    $qb = new QueryBuilder();
+    echo $qb->select("name", "firstName", "age,sex")
+        ->from("persons")
+        ->where("sex='f' and age<18")
+        ->orWhere("sex='m' and age <12")
+        ->order(['name'=>'ASC','firstName'=>'DESC'])
+        ->limit(5)
+        ->offset(10)
+    ->getSQL();
+
+    echo "<br>";
+    $text="15/08/2005";
+    $text2="2005-12-31";
+    $regexp="/^(1|2)[0-9]{3}-(0?[1-9]|1[0-2])-([0-2]?[0-9]|3[0-1])$/";
+    echo preg_match($regexp,$text2,$ar);
+    var_dump($ar);
+    $tel="06-12-00-15-24";
+    $telmatch="/^0[6-7]([-. ]?[0-9]{2}){4}$/";
+    $rp="[-. ]";
+    echo preg_replace($rp,"t",$tel);
+
     ?>
 </p>
