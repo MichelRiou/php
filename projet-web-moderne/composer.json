@@ -1,0 +1,14 @@
+{
+    "name": "formation/projet-web-moderne",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Michel RIOU",
+            "email": "michel.riou@laposte.net"
+        }
+    ],
+    "require": {
+        "phpoffice/phpspreadsheet": "^1.1"
+    }
+}
