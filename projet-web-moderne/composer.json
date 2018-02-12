@@ -13,7 +13,8 @@
   },
   "autoload": {
     "psr-4":{
-      "m2i\\framework\\": "Framework/"
+      "m2i\\framework\\": "Framework/",
+      "m2i\\monAppli\\Controllers\\" : "src/Controllers/"
     }
 
     }

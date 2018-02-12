@@ -1,0 +1,9 @@
+RewriteEngine on
+
+# Ne réécrire l'url que si celle-ci ne correspond pas à un dossier ou un fichier existant
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+# Capture n'importe quoi et les parenthèses permettent de réutiliser
+# L = last rule evaluée et QSA permet de garder les parametres lors de la réécriture
+RewriteRule ^(.*)$ app.php?path=$1 [L,QSA]
+# Modification de httpdv.conf
