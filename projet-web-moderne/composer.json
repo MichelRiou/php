@@ -1,14 +1,20 @@
 {
-    "name": "formation/projet-web-moderne",
-    "type": "project",
-    "license": "MIT",
-    "authors": [
-        {
-            "name": "Michel RIOU",
-            "email": "michel.riou@laposte.net"
-        }
-    ],
-    "require": {
-        "phpoffice/phpspreadsheet": "^1.1"
+  "name": "formation/projet-web-moderne",
+  "type": "project",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Michel RIOU",
+      "email": "michel.riou@laposte.net"
+    }
+  ],
+  "require": {
+    "phpoffice/phpspreadsheet": "^1.1"
+  },
+  "autoload": {
+    "psr-4":{
+      "m2i\\framework\\": "Framework/"
+    }
+
     }
 }
